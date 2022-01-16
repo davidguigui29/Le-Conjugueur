@@ -1,0 +1,154 @@
+Leconjugueur:
+
+<Leconjugueur>:
+	canvas.before:
+		Color:
+			rgba: 1, 1, 1, 1
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	orientation: "vertical"
+	#spacing: "10dp"
+	BoxLayout:
+		orientation: "vertical"
+		Label:
+			canvas.before:
+				Color:
+					rgba: 0, 0, 0, 1
+				Rectangle:
+					pos: self.pos
+					size: self.size
+			text: "Le Conjugueur"
+			font_size: 40
+			color: "00FFCE"
+			background_color:"00FFCE"
+			#size_hint: 0.5, 0.5
+			#pos_hint: {"x": 0.2}
+
+
+		TextInput:
+			id: name_input
+			text: "aimer"
+			size_hint: ".50dp", ".5dp"
+		
+			text:
+			multiline: False
+			on_text_validate: root.conjugate_first_group_verbs_in_simple_present()
+
+		BoxLayout:
+			ToggleButton:
+				id: mode_indicatif
+				text: "Indicatif"
+				font_size: "20dp"
+				color: 1, 0, 1, 1
+				background_color: "FF0FCF"
+				#size_hint: 0.5, 0.5
+				#state: "down"
+				on_state: root.mode_indicatif_control(self)
+				
+
+			ToggleButton:
+				id: infinitif
+				text: "Infinitif"
+				font_size: "20dp"
+				color: 1, 0, 1, 1
+				background_color: "FF0FCF"
+				#size_hint: 0.5, 0.5
+				on_state: root.infinitive()
+
+	#BoxLayout:
+		#orientation: "horizontal"
+	Label:
+		canvas.before:
+			Color:
+				rgba: 1, 1, 1, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		id: name_label
+		markup: True
+		text: "Tableau d'affichage"
+		#text_size: self.size
+		multiline: True
+		color: 0, 0, 0, 1
+		size_hint: 1, 1
+		font_size: 20
+		#pos: "100dp", "100dp"
+
+	
+	BoxLayout:
+		orientation: "vertical"
+		BoxLayout:
+			orientation: "horizontal"
+			BoxLayout:
+				orientation: "vertical"
+				Button:
+					id: my_present
+					text: "Présent"
+					font_size: "20dp"
+					#color: 1, 0, 1, 1
+					background_color: "FF0FCF"
+					#size_hint: 1, 0.4
+					#disabled: True
+					on_state: root.conjugate_first_group_verbs_in_simple_present()
+				Button:
+					id: my_imparfait
+					text: "Imparfait"
+					background_color: "FF00CE"
+					font_size: "20dp"
+					#size_hint: 1, 0.4
+					#color: 0, 0, 1, 1
+					#pos_hint: {"center_x": .5}
+					on_press: root.conjugate_first_group_verbs_in_imparfait() 
+					# disabled: False
+				Button:
+					id: my_simple_past
+					text:"Passé simple"
+					font_size: "20dp"
+					#color: 1, 0, 1, 1
+					background_color: "FF0FCF"
+					on_press: root.conjugate_first_group_verbs_in_simple_past()
+
+				Button:
+					text: "Futur simple"
+					font_size: "20dp"
+					# color: 1, 0, 1, 1
+					background_color: "FF0FCF"
+					on_press: root.conjugate_first_group_verbs_in_simple_future()
+
+			# BoxLayout:
+			# 	orientation: "vertical"
+			# 	Button:
+			# 		text: " Passé composé"
+			# 		font_size: "20dp"
+			# 		#color: 1, 0, 1, 1
+			# 		background_color: "FF0FCF"
+			# 		on_press: root.present_perfect()
+
+			# 	Button:
+			# 		text: "Plus-que-parfait"
+			# 		font_size: "20dp"
+			# 		#color: 1, 0, 1, 1
+			# 		background_color: "FF0FCF"
+			# 	Button:
+			# 		text: "Passé antérieur"
+			# 		font_size: "20dp"
+			# 		#color: 1, 0, 1, 1
+			# 		background_color: "FF0FCF"
+
+			# 	Button:
+			# 		text: "Futur antérieur"
+			# 		font_size: "20dp"
+			# 		#color: 1, 0, 1, 1
+			# 		background_color: "FF0FCF"
+		
+		#Button:
+		#	text: "conjugue"
+		#	bold: True
+		#	background_color: "FF00FC"#"#00FFCE"
+		#	font_size: "30dp"
+		#	#color: 0, 0, 1, 1
+		#	#size_hint: "50dp", None
+		#	pos_hint: {"center_x": .5}
+		#	on_press: root.indicatif_enabled#root.conjugate_first_group_verbs_in_simple_present()
+		#	#disabled: True
